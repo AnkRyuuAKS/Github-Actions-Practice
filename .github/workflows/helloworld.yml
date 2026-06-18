@@ -1,0 +1,37 @@
+name: hello-world
+
+on:
+  workflow_dispatch:
+
+jobs:
+  say-hello:
+      runs-on: ubuntu-latest
+      env:
+        STEP_NAME_01: "Say hello"
+      steps:
+        - name: ${{ env.STEP_NAME_01 }}
+          run: echo "Hello World from the bash in github ubuntu"
+          
+  say-hello-in-py:
+      runs-on: ubuntu-latest
+      env:
+        STEP_NAME_02: "Say hello in python"
+      steps:
+        - name: ${{ env.STEP_NAME_02 }}
+          run: print("Hello from the python")
+          shell: python
+
+  say-hello-in-js:
+      runs-on: ubuntu-latest
+      steps:
+      - run: |
+          console.log("Hello from JavaScript");
+        shell: node
+        
+  clone-repo:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v4
+        - run: |
+            echo "Repo cloned succesfull"
+     
